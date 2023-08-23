@@ -2,12 +2,12 @@ package Bitwise_Operators;
 
 public class CountOFLongestConsecutiveBits {
     public static void main(String[] args) {
-        int n=14;
-        System.out.println("Count of longest consecutive bits:"+longestConseBits(n));
+        int n=10;
+        System.out.println("Count of longest consecutive bits:"+longestConsecutiveBits(n));
     }
     
     //O(n)
-    public static int longestConseBits(int n){
+    public static int longestConsecutiveBits(int n){
         int count=0;
         while(n>0){
             n=n&(n<<1);
