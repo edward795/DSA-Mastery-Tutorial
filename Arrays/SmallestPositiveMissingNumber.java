@@ -1,4 +1,7 @@
 package Arrays;
+
+import java.util.Arrays;
+
 public class SmallestPositiveMissingNumber {
     public static void main(String[] args) {
         int[] arr=new int[]{2, 3, 7, 6, 8, -1, -10, 15};
