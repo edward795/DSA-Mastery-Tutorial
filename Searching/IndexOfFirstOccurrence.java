@@ -22,7 +22,6 @@ public class IndexOfFirstOccurrence {
                     high=mid-1;
             }
         }
-
         return -1;
     }
 }
