@@ -12,6 +12,9 @@ public class InsertionsInLinkedLIist {
         head=insertEnd(head, 50);
         head=insertEnd(head, 60);
         Node.printList(head);
+
+        insertAtPos(head, 3, 70);
+        Node.printList(head);
     }
 
     //TC : O(1)
@@ -32,6 +35,24 @@ public class InsertionsInLinkedLIist {
         while(curr.next!=null)
             curr=curr.next;
 
+        curr.next=temp;
+        return head;
+    }
+
+    //TC :O(n)
+    static Node insertAtPos(Node head,int pos,int x){
+        Node temp=new Node(x);
+        if(pos==1){
+            temp.next=head;
+            return temp.next;
+        }
+
+        Node curr=head;
+        for(int i=1;i<=pos-2 && curr!=null;i++) 
+            curr=curr.next;
+        if(curr==null) 
+            return head;
+        temp.next=curr.next;
         curr.next=temp;
         return head;
     }

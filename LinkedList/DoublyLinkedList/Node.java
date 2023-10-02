@@ -1,21 +1,21 @@
-package LinkedList.utils;
+package LinkedList.DoublyLinkedList;
 
 public class Node {
-    public int data;
-    public Node next;
+    int data;
+    Node prev,next;
 
-    public Node(int data){
+    Node(int data){
         this.data=data;
+        prev=null;
         next=null;
     }
 
-    public static void printList(Node head){
+    static void printForward(Node head){
         Node curr=head;
         while(curr!=null){
             System.out.print(curr.data+"->");
             curr=curr.next;
         }
         System.out.print("null");
-        System.out.println();
     }
 }
