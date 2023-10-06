@@ -33,28 +33,58 @@ public class ReverseInKGroups {
 
 
     //Efficient Soln : O(n)
-    static Node reverseInGroups(Node head,int k){
-        Node curr=head,prevFirst=null;
-        boolean isFirstPass=true;
-        while(curr!=null){
-            Node first=curr,prev=null;
-            int count=0;
+    // static Node reverseInGroups(Node head,int k){
+    //     Node curr=head,prevFirst=null;
+    //     boolean isFirstPass=true;
+    //     while(curr!=null){
+    //         Node first=curr,prev=null;
+    //         int count=0;
 
-            while(curr!=null && count<k){
-                Node next=curr.next;
-                curr.next=prev;
-                prev=curr;
-                curr=next;
-                count++;
-            }
-            if(isFirstPass){
-                head=prev;
-                isFirstPass=false;
-            }else{
-                prevFirst=first;
-                prevFirst.next=prev;
-            }
+    //         while(curr!=null && count<k){
+    //             Node next=curr.next;
+    //             curr.next=prev;
+    //             prev=curr;
+    //             curr=next;
+    //             count++;
+    //         }
+    //         if(isFirstPass){
+    //             head=prev;
+    //             isFirstPass=false;
+    //         }else{
+    //             prevFirst=first;
+    //             prevFirst.next=prev;
+    //         }
+    //     }
+    //     return head;
+    // }
+
+    static Node reverseInGroups(Node head,int k){
+        if(head==null || head.next==null) return head;
+
+        Node dummy=new Node(-1);
+        dummy.next=head;
+        Node prev=dummy,curr=dummy,next=dummy;
+
+        int count=0;
+        while(curr!=null){
+            count++;
+            curr=curr.next;
         }
-        return head;
+
+        while(next!=null){
+            curr=prev.next;
+            next=curr.next;
+
+            int tLoop=count>k?k:count-1;
+            for(int i=0;i<tLoop;i++){
+                curr.next=next.next;
+                next.next=prev.next;
+                prev.next=next;
+                next=curr.next;
+            }
+            prev=curr;
+            count-=k;
+        }
+        return dummy.next;
     }
 }
