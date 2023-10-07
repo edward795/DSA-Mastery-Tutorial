@@ -56,8 +56,8 @@ public class CloneLinkedListWithRandomPointers {
             clone=clone.next;
         }
         return head2;
+        }
     }
-
 
 class RNode{
     int data;
