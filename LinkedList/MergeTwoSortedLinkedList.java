@@ -30,27 +30,58 @@ public class MergeTwoSortedLinkedList {
         Node.printList(mergeList(head1, head2));
     }
 
-    //Naive Soln : O(n^2)
-    static Node mergeList(Node head1,Node head2){
-        ArrayList<Node> arr=new ArrayList<>();
-        Node curr=head1;
-        while(curr!=null){
-            arr.add(curr);
-            curr=curr.next;
-        }
+    //Naive Soln : O(nlogn) - O(1)
+    // static Node mergeList(Node head1,Node head2){
+    //     ArrayList<Node> arr=new ArrayList<>();
+    //     Node curr=head1;
+    //     while(curr!=null){
+    //         arr.add(curr);
+    //         curr=curr.next;
+    //     }
 
-        curr=head2;
-        while(curr!=null){
-            arr.add(curr);
-            curr=curr.next;
+    //     curr=head2;
+    //     while(curr!=null){
+    //         arr.add(curr);
+    //         curr=curr.next;
+    //     }
+        
+    //     Collections.sort(arr,(n1,n2)->n1.data-n2.data);
+
+    //     for(int i=0;i<arr.size()-1;i++){
+    //         curr=arr.get(i);
+    //         curr.next=arr.get(i+1);
+    //     }
+    //     return arr.get(0);
+    // }
+
+    //Efficient Soln : O(n) - O(1)
+    static Node mergeList(Node a,Node b){
+        if(a==null) return b;
+        if(b==null) return a;
+
+        Node head=null,tail=null;
+        if(a.data<=b.data){
+        head=tail=a;
+        a=a.next;
+        }else{
+        head=tail=b;
+        b=b.next;
         }
         
-        Collections.sort(arr,(n1,n2)->n1.data-n2.data);
-
-        for(int i=0;i<arr.size()-1;i++){
-            curr=arr.get(i);
-            curr.next=arr.get(i+1);
+        while(a!=null && b!=null){
+        if(a.data<=b.data){
+        tail.next=a;
+        tail=a;
+        a=a.next;
+        }else{
+        tail.next=b;
+        tail=b;
+        b=b.next;
         }
-        return arr.get(0);
+        
+        if(a==null) tail.next=b;
+        else tail.next=a;
+        }
+        return head;
     }
 }
