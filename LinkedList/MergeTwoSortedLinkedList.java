@@ -55,33 +55,47 @@ public class MergeTwoSortedLinkedList {
     // }
 
     //Efficient Soln : O(n) - O(1)
-    static Node mergeList(Node a,Node b){
-        if(a==null) return b;
-        if(b==null) return a;
+    // static Node mergeList(Node a,Node b){
+    //     if(a==null) return b;
+    //     if(b==null) return a;
 
-        Node head=null,tail=null;
-        if(a.data<=b.data){
-        head=tail=a;
-        a=a.next;
-        }else{
-        head=tail=b;
-        b=b.next;
-        }
+    //     Node head=null,tail=null;
+    //     if(a.data<=b.data){
+    //     head=tail=a;
+    //     a=a.next;
+    //     }else{
+    //     head=tail=b;
+    //     b=b.next;
+    //     }
         
-        while(a!=null && b!=null){
-        if(a.data<=b.data){
-        tail.next=a;
-        tail=a;
-        a=a.next;
-        }else{
-        tail.next=b;
-        tail=b;
-        b=b.next;
-        }
+    //     while(a!=null && b!=null){
+    //     if(a.data<=b.data){
+    //     tail.next=a;
+    //     tail=a;
+    //     a=a.next;
+    //     }else{
+    //     tail.next=b;
+    //     tail=b;
+    //     b=b.next;
+    //     }
         
-        if(a==null) tail.next=b;
-        else tail.next=a;
+    //     if(a==null) tail.next=b;
+    //     else tail.next=a;
+    //     }
+    //     return head;
+    // }
+
+    //Efficient Soln : O(n) - recursive soln
+    static Node mergeList(Node head1,Node head2){
+        if(head1==null) return head2;
+        if(head2==null) return head1;
+
+        if(head1.data<head2.data){
+            head1.next=mergeList(head1.next, head2);
+            return head1;
+        }else{
+            head2.next=mergeList(head1, head2.next);
+            return head2;
         }
-        return head;
     }
 }

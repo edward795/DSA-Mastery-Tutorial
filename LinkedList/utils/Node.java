@@ -1,6 +1,7 @@
 package LinkedList.utils;
 
 public class Node {
+    public static int length;
     public int data;
     public Node next;
 
