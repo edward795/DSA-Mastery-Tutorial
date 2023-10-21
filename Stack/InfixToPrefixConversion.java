@@ -3,10 +3,10 @@ package Stack;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class InfixToPostfixConversion {
+public class InfixToPrefixConversion {
     public static void main(String[] args) {
         String exp="a+b*(c^d-e)^(f+g*h)-i";
-        System.out.println("postfix equivalent of the converted string is : "+infixToPostfix(exp));
+        System.out.println("prefix equivalent of the converted string is : "+infixToPrefix(exp));
     }
 
     static int prec(char ch){
@@ -23,17 +23,17 @@ public class InfixToPostfixConversion {
         return -1;
     }
 
-    static String infixToPostfix(String exp){
+    static String infixToPrefix(String exp){
         String result=new String("");
         Deque<Character> stack=new ArrayDeque<Character>();
-        for(int i=0;i<exp.length();i++){
+        for(int i=exp.length()-1;i>=0;i--){
             char c=exp.charAt(i);
             if(Character.isLetterOrDigit(c)){
                 result+=c;
-            }else if(c=='(')
+            }else if(c==')')
                 stack.push(c);
-             else if(c==')'){
-                while(!stack.isEmpty() && stack.peek()!='('){
+             else if(c=='('){
+                while(!stack.isEmpty() && stack.peek()!=')'){
                     result+=stack.peek();
                     stack.pop();
                 }

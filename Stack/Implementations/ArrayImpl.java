@@ -14,7 +14,7 @@ class MyStack{
     int[] arr;
     int cap;
     int top;
-
+ 
     MyStack(int c){
         top=-1;
         cap=c;
