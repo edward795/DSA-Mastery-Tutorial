@@ -18,7 +18,7 @@ public class ReverseFirstKEleInQueue {
 
     }
 
-    //TC : O(n) - O(n)
+    //TC : O(n) - O(k)
     static void reverseFirstKElements(Queue<Integer> q,int k){
         Stack<Integer> st=new Stack<>();
         for(int i=0;i<k;i++){
