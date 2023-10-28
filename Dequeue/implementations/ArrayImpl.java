@@ -1,5 +1,6 @@
 package Dequeue.implementations;
 
+
 import java.util.Deque;
 
 public class ArrayImpl {
@@ -53,7 +54,7 @@ class MyDequeue{
     //TC : O(n)
     void deleteFront(){
         if(isEmpty()) return;
-        for(int i=0;i<size;i++)
+        for(int i=0;i<size-1;i++)
             arr[i]=arr[i+1];
         size--;
     }
