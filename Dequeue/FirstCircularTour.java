@@ -38,6 +38,6 @@ public class FirstCircularTour {
                 dq.removeFirst();
             }
         }
-        return dq.peekLast();
+        return dq.peekFirst();
     }
 }
