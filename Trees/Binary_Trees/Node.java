@@ -21,6 +21,15 @@ public class Node {
         root.right.right=new Node(70);
         return root;
     }
+
+
+    public static void printTree(Node root){
+        if(root!=null){
+            printTree(root.left);
+            System.out.print(root.data+" ");
+            printTree(root.right);
+        }
+    }
 }
 
 
