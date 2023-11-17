@@ -3,11 +3,14 @@ package Trees.Binary_Search_Tree;
 public class Node {
     int data;
     Node left,right;
+    //count variable for solving some problems
+    int lcount=0;
 
     Node(int d){
         data=d;
         left=null;
         right=null;
+        lcount=0;
     }
 
     public static void inorder(Node root){
