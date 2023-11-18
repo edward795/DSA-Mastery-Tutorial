@@ -1,0 +1,97 @@
+
+public class AVLTreeImpl{
+    public static void main(String[] args){
+        AVLTree tree=new AVLTree();
+        tree.insert(10);
+        tree.insert(20);
+        tree.insert(34);
+        tree.insert(41);
+        tree.insert(72);
+        tree.inorder(root);
+    }
+}
+
+ class AVLTree{
+    int height(Node root){
+        if(root==null) return 0;
+        return 1+root.height;
+    }
+
+    int getBalanceFactor(Node root){
+        if(root==null) return 0;
+        return height(root.left)-height(root.right);
+    }
+
+    Node rightRotate(Node z){
+        Node y=root.left;
+        Node T3=y.right;
+
+        //perform rotation 
+        y.right=z;
+        y.left=T3;
+
+        z.height=Math.max(height(x.left),height(z.right));
+        y.height=Math.max(height(y.left),height(y.right));
+        return z;
+    }
+
+    Node leftRotate(Node z){
+        Node y=z.right;
+        Node T3=y.left;
+
+        //perform rotation 
+        z.left=y;
+        z.right=T3;
+
+        z.height=Math.max(height(z.left),height(z.right));
+        y.height=Math.max(height(y.left),height(y.right));
+        return z;
+    }
+
+    Node insert(Node head,int data){
+        if(root==null) return new Node(data);
+        if(root.data>data) 
+            root.right=insert(root.right,data);
+        else if(root.data<data) 
+            root.left=insert(root.left,data);
+        else 
+            return root;
+
+        root.height=1+Math.max(height(root.left),height(root.right));
+
+        int balance_factor=getBalanceFactor(root);
+        if(balance_factor<-1 && data>root.right.data) 
+            return leftRotate(root);
+        if(balance_factor>1 && data<root.left.data) 
+            return rightRotate(root);
+
+        if(balance_factor>1 && data>root.left.data){
+            root.left=leftRotate(root.left);
+            return rightRotate(root);
+        }
+
+        if(balance_factor<-1 && data<root.right.data){
+            root.right=rightRotate(root.right);
+            return leftRotate(root);
+        }
+        return root;
+    }
+
+    void inorder(Node root){
+        if(root!=null){
+            inorder(root.left);
+            System.out.print(root.data=" ");
+            inorder(root.right);
+        }
+    }
+}
+
+class Node{
+    int data,height;
+    Node left,right;
+
+    Node(int d){
+        data=d;
+        height=1;
+    }
+}
