@@ -74,6 +74,13 @@ public class MinHeap{
         extractMin();
     }
 
+    //TC : O(n)
+    void buildHeap(){
+        for(int i=(size-2)/2;i>=0;i--){
+            minHeapify(i);
+        }
+    }
+
     static void swap(int[] arr,int i,int j){
         int temp=arr[i];
         arr[i]=arr[j];
