@@ -10,16 +10,18 @@ public class DetectCycleInGraph {
         g.addEdge(2, 3);
         g.addEdge(3, 1);
         
-        System.out.println(DFS(g.adj,5));
+        System.out.println("is the graph cyclic ? "+DFS(g.adj,5));
     }
 
     static boolean DFSRec(ArrayList<ArrayList<Integer>> adj,int s,boolean[] visited,int parent){
         visited[s]=true;
         for(int u:adj.get(s)){
-            if(DFSRec(adj, u, visited, s)==true)
-                 return true;
-            else if(u!=parent)
-                 return true;
+            if(!visited[u]){
+                if(DFSRec(adj, u, visited, s)==true)
+                    return true;
+                else if(u!=parent)
+                    return true;
+            }
         }
         return false;
     }
