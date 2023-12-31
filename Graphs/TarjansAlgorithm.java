@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class TarjansAlgorithm {
     static int time=0;
-    static ArrayList<Integer> ans=new ArrayList<>();
+    static ArrayList<ArrayList<Integer>> ans;
     public static void main(String[] args) {
         Graph g=new Graph(5);
         g.addEdge(1,0);
@@ -15,6 +15,7 @@ public class TarjansAlgorithm {
         g.addEdge(0, 2);
         g.addEdge(0, 3);
         g.addEdge(3, 4);
+        System.out.println("Strongly connected components are : "+tarjans(5, g.adj));
     }
 
     static void dfs(int s,ArrayList<ArrayList<Integer>> adj,Stack<Integer> st,int[] low,int[] dist,boolean[] inStack){
@@ -40,7 +41,7 @@ public class TarjansAlgorithm {
             inStack[st.peek()]=false;
             list.add(st.pop());
             Collections.sort(list);
-            ans.addAll(list);
+            ans.add(list);
         }
     }
 
