@@ -28,7 +28,8 @@ public class ShortestPathInDAG {
         for(int i=0;i<v;i++){
             dist[i]=Integer.MAX_VALUE;
         }
-        dist[s]=0;
+
+        dist[0]=0;
         while(!st.isEmpty()){
             int u=st.pop();
             Iterator<WeightedNode> it;

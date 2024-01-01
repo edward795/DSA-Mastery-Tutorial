@@ -6,13 +6,15 @@ import java.util.Queue;
 
 public class TopologicalSorting_KahnsAlgorithm {
     public static void main(String[] args) {
-        Graph g=new Graph(5);
-        g.addEdge(0, 2);
-        g.addEdge(0, 3);
-        g.addEdge(1, 3);
+        int v=5;
+        Graph g=new Graph(v);
+        g.addEdge(0, 1);
+        g.addEdge(1, 2);
+        g.addEdge(2, 3);
+        g.addEdge(3, 1);
         g.addEdge(1, 4);
-        
-        for(int i:topologicalSorting(g.adj, 5))
+
+        for(int i:topologicalSorting(g.adj, v))
             System.out.print(i+" ");
     }
 
@@ -32,14 +34,15 @@ public class TopologicalSorting_KahnsAlgorithm {
             if(indegree[i]==0)
                 q.add(i);
         }
+        for(int i:indegree)
+            System.out.println(i);
 
         int k=0;
         while(!q.isEmpty()){
             int curr=q.poll();
             res[k++]=curr;
-            System.out.print(curr+" ");
             for(int i:adj.get(curr)){
-                indegree[i]--;
+                --indegree[i];
                 if(indegree[i]==0) 
                     q.add(i);
             }
