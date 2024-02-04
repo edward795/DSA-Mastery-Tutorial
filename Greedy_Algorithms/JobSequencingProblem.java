@@ -1,6 +1,7 @@
 package Greedy_Algorithms;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class JobSequencingProblem {
@@ -9,6 +10,7 @@ public class JobSequencingProblem {
         System.out.println("Max Profit "+JobScheduling(jobs, 4));
     }
 
+    //TC : O(nlogn)
     public static int[] JobScheduling(Job[] arr,int n){
         Arrays.sort(arr,new MyCmp());
         int[] res=new int[]{0,0};

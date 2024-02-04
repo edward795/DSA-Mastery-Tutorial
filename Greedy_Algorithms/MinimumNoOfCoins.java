@@ -9,7 +9,7 @@ public class MinimumNoOfCoins{
         System.out.println("Minimum no of coins of the above denomination required to give the above amount is : "+minCoins(coins, 4, 50));
     }
 
-    //TC : O(n)
+    //TC : O(nlogn)
     static int minCoins(Integer[] coins,int n,int amount){
         Arrays.sort(coins,Collections.reverseOrder());
         int res=0;

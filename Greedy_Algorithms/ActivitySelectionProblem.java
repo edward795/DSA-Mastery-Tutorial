@@ -22,7 +22,7 @@ public class ActivitySelectionProblem {
     //     return res;
     // }
 
-    //TC : O(n)
+    //TC : O(nlogn)
     static int maxActivity(Activity[] activities){
         Arrays.sort(activities,new MyCmp());
         int res=1;

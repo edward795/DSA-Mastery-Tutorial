@@ -8,6 +8,7 @@ public class FractionalKnapsack {
         System.out.println("Max KnapSack Capacity is : "+fracKnapSack(items, 15));
     }
 
+    //TC : O(nlogn)
     static double fracKnapSack(Item[] arr,int W){
         Arrays.sort(arr);
         double res=0.0;
