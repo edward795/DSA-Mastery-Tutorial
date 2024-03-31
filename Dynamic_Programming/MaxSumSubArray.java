@@ -32,7 +32,7 @@ public class MaxSumSubArray {
     // return fans;
     // }
 
-    // TC : O(n)
+    // TC : O(n )
     static int maxSumSubArray(int[] arr, int n) {
         int res = Integer.MIN_VALUE, prev = 0, curr = 0;
         for (int x : arr) {
