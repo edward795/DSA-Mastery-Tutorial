@@ -1,5 +1,7 @@
 package Trie;
 
+import Trie.TrieNode;
+
 public class Trie {
     TrieNode root;
 
