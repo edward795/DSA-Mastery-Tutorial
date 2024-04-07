@@ -12,7 +12,7 @@ public class RenamingCities {
     }
 
     public static TrieNode root;
-    public static HashMap<String, Integer> h;
+    public static HashMap<String, Integer> h = new HashMap<>();
 
     public static void check(String[] arr, int n) {
         root = new TrieNode();
@@ -31,7 +31,7 @@ public class RenamingCities {
         for (int i = 0; i < s.length(); i++) {
             int index = s.charAt(i) - 'a';
             if (!found)
-                code += s.charAt(index);
+                code += s.charAt(i) - 'a';
             if (curr.child[index] == null) {
                 curr.child[index] = new TrieNode();
                 found = true;
@@ -51,5 +51,10 @@ class TrieNode {
 
     public boolean isEnd;
     public TrieNode[] child;
+
+    TrieNode() {
+        isEnd = false;
+        child = new TrieNode[26];
+    }
 
 }
