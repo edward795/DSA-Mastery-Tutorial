@@ -2,34 +2,20 @@ package Trie;
 
 public class MostFrequentWord {
     public static void main(String[] args) {
-        String[] arr = new String[] { "geeks", "for", "geeks" };
-        int n = 3;
+        String arr[] = { "geeks", "for", "geeks", "a", "portal", "to", "learn", "can", "be", "computer", "science",
+                "zoom", "yup", "fire", "in", "be", "data", "geeks" };
+        int n = 17;
         System.out.println("The most occurring word is " + mostFrequentWord(arr, n));
     }
-
-    class TrieNode {
-        public TrieNode children[];
-        public int count;
-        public int first;
-
-        public TrieNode() {
-            count = 0;
-            children = new TrieNode[26];
-            for (int i = 0; i < 26; i++) {
-                children[i] = null;
-            }
-        }
-    }
-
-    public static TrieNode root = new TrieNode();
 
     public static String mostFrequentWord(String arr[], int n) {
         String ret = "";
         int maxCount = 0;
         int ret_first = 0;
+        TrieNode root = new TrieNode();
         for (int i = 0; i < n; i++) {
             TrieNode curr = root;
-            for (int j = 0; j < arr[i].length(); j++) {
+            for (int j = 0; j < arr[i].length() - 1; j++) {
                 int index = arr[i].charAt(i) - 'a';
                 if (curr.children[index] == null) {
                     curr.children[index] = new TrieNode();
@@ -46,5 +32,19 @@ public class MostFrequentWord {
             }
         }
         return ret;
+    }
+}
+
+class TrieNode {
+    public TrieNode children[];
+    public int count;
+    public int first;
+
+    public TrieNode() {
+        count = 0;
+        children = new TrieNode[26];
+        for (int i = 0; i < 26; i++) {
+            children[i] = null;
+        }
     }
 }
