@@ -5,10 +5,8 @@ import java.util.HashMap;
 public class RenamingCities {
     public static void main(String[] args) {
         int n = 6;
-        String[] cities = new String[] { "Shimla", "Safari", "Jammu", "Delhi", "Jammu", "Dehradun" };
-        for (String i : cities) {
-            insert(i);
-        }
+        String[] cities = new String[] { "shimla", "safari", "sammu", "delhi", "jammu", "dehradun" };
+        check(cities, n);
     }
 
     public static TrieNode root;
@@ -32,11 +30,11 @@ public class RenamingCities {
             int index = s.charAt(i) - 'a';
             if (!found)
                 code += s.charAt(i) - 'a';
-            if (curr.child[index] == null) {
-                curr.child[index] = new TrieNode();
+            if (curr.children[index] == null) {
+                curr.children[index] = new TrieNode();
                 found = true;
             }
-            curr = curr.child[index];
+            curr = curr.children[index];
             if (!found && curr.isEnd) {
                 System.out.println(s + "" + code_num);
             } else {
@@ -48,13 +46,14 @@ public class RenamingCities {
 }
 
 class TrieNode {
-
+    public TrieNode children[];
     public boolean isEnd;
-    public TrieNode[] child;
 
-    TrieNode() {
+    public TrieNode() {
         isEnd = false;
-        child = new TrieNode[26];
+        children = new TrieNode[26];
+        for (int i = 0; i < 26; i++) {
+            children[i] = null;
+        }
     }
-
 }

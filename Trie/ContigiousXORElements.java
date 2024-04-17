@@ -10,7 +10,7 @@ public class ContigiousXORElements {
         System.out.println("The contigous elements max xor is " + maxSubArrayXOR(arr, n));
     }
 
-    // NAive Soln : TC : O(n^2)
+    // Naive Soln : TC : O(n^2)
     // static int maxSubArrayXOR(int[] arr, int n) {
     // int res = Integer.MIN_VALUE;
     // for (int i = 0; i < n; i++) {

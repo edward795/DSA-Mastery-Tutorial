@@ -6,10 +6,8 @@ import java.util.Collections;
 
 public class CamelCaseStrings {
     public static void main(String[] args) {
-        int n = 8;
-        String[] dict = new String[] { "hi", "hello", "helloworld", "hitech", "higeek", "hitech", "world", "hitechcity",
-                "hitechlab" };
-        String pattern = "HA";
+        String[] dict = new String[] { "WelcomeGeek", "WelcomeToGeeksForGeeks", "GeeksForGeeks" };
+        String pattern = "KG";
         findAllWords(dict, pattern);
     }
 
@@ -24,7 +22,9 @@ public class CamelCaseStrings {
     static void insert(TrieNode root, String key) {
         TrieNode curr = root;
         for (int i = 0; i < key.length(); i++) {
-            int index = key.charAt(i) - 'a';
+            int index = Math.abs(key.charAt(i) - 'a');
+            if (Character.isUpperCase(key.charAt(i)))
+                continue;
             if (curr.children[index] == null) {
                 curr.children[index] = new TrieNode();
             }
@@ -37,14 +37,15 @@ public class CamelCaseStrings {
     static void search(TrieNode root, String key) {
         TrieNode curr = root;
         for (int i = 0; i < key.length(); i++) {
-            int index = key.charAt(i) - 'a';
+            int index = Math.abs(key.charAt(i) - 'a');
             if (curr.children[index] == null) {
                 System.out.println("No Match Found!");
                 return;
             }
             curr = curr.children[index];
         }
-        displayAll(root);
+        displayAll(curr);
+        return;
     }
 
     static void displayAll(TrieNode root) {
@@ -64,7 +65,7 @@ public class CamelCaseStrings {
 }
 
 class TrieNode {
-    TrieNode children[] = new TrieNode[16];
+    TrieNode children[] = new TrieNode[26];
     boolean isEndOfWord;
     ArrayList<String> word;
 
