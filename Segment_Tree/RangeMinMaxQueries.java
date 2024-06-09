@@ -4,9 +4,23 @@ public class RangeMinMaxQueries {
     public static void main(String[] args) {
         int[] arr = new int[] { 1, 3, 7, 5, 9, 1 };
         int N = 6, Q = 3;
+        System.out.println("st created : " + constructST(arr, N));
+
+        PII[] st = constructST(arr, N);
         // queries : getMinMax(0,2)
         // getMinMax(3,19)
         // getMinMax(0,5)
+
+        PII ans = getMinMax(st, arr, N, 0, 2);
+        System.out.println("min & max in (0,2) are : " + ans.first + ":" + ans.second);
+
+        PII ans2 = getMinMax(st, arr, N, 3, 6);
+        System.out.println("min & max in (3,6) are : " + ans2.first + ":" + ans2.second);
+
+        updateUtil(0, N - 1, 2, 0, arr, st, 9);
+
+        PII ans3 = getMinMax(st, arr, N, 0, 4);
+        System.out.println("min & max in (3,6) are : " + ans3.first + ":" + ans3.second);
 
     }
 
@@ -28,7 +42,7 @@ public class RangeMinMaxQueries {
         int x = (int) Math.ceil(Math.log(n) / Math.log(2));
         int max_size = 2 * (int) Math.pow(2, x) - 1;
         PII st[] = new PII[max_size];
-        constructSTUtil(arr, n, x, st, max_size);
+        constructSTUtil(arr, 0, n - 1, st, 0);
         return st;
     }
 
@@ -47,7 +61,7 @@ public class RangeMinMaxQueries {
         return;
     }
 
-    static void updateUtil(int ss, int se, int i, int si, long[] arr, PII st[], long new_val) {
+    static void updateUtil(int ss, int se, int i, int si, int[] arr, PII st[], long new_val) {
         if (i < ss || i > se)
             return;
         if (ss == se) {

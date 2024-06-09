@@ -2,6 +2,15 @@ package Segment_Tree;
 
 public class RangeGCDQueries {
     public static void main(String[] args) {
+        int N = 6;
+        int Q = 3;
+        int[] arr = new int[] { 2, 3, 4, 6, 8, 16 };
+        int[] st = constructSegmentTree(arr);
+        int gcd = findRangeGcd(0, 2, st, N);
+        System.out.println("GCD in range (0,2) : " + gcd);
+        updateValue(3, 8, arr, st, N);
+        int gcd1 = findRangeGcd(2, 5, st, N);
+        System.out.println("GCD in range (2,5) : " + gcd1);
 
     }
 
