@@ -1,15 +1,10 @@
-package Disjoint_Set;
-
-public class UnionByRank {
+class PathCompression {
 
     static int[] parent = new int[5];
     static int[] rank = new int[5];
 
     public static void main(String[] args) {
-        initialize();
-        System.out.println("The representative integer of set 1 & 2 is " + find(1) + " " + find(2));
-        union(1, 2);
-        System.out.println("The representative integer of set 1 & 2 is " + find(1) + " " + find(2));
+
     }
 
     static void initialize() {
@@ -19,15 +14,15 @@ public class UnionByRank {
         }
     }
 
-    // TC : O(n)
+    // find() with path compression : TC : O(1)
     static int find(int x) {
         if (parent[x] == x)
             return x;
-        else
-            return find(parent[x]);
+        parent[x] = find(parent[x]);
+        return parent[x];
     }
 
-    // TC : O(logn)
+    // union() by rank : TC : O(logn)
     static void union(int x, int y) {
         int x_rep = find(x);
         int y_rep = find(y);
@@ -40,6 +35,5 @@ public class UnionByRank {
             parent[y_rep] = x_rep;
             rank[x_rep]++;
         }
-
     }
 }

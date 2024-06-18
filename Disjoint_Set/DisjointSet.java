@@ -17,6 +17,7 @@ class DisjointSet {
         }
     }
 
+    // TC : O(n)
     static int find(int x) {
         if (parent[x] == x)
             return x;
@@ -24,6 +25,7 @@ class DisjointSet {
             return find(parent[x]);
     }
 
+    // TC : O(n)
     static void union(int x, int y) {
         int x_rep = find(x);
         int y_rep = find(y);
