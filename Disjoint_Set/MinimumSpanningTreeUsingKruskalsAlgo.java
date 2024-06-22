@@ -8,6 +8,7 @@ public class MinimumSpanningTreeUsingKruskalsAlgo {
         System.out.println("Minimum spanning tree using kruskal's & DSU is " + kruskalsDSU(edges, n, m));
     }
 
+    // TC : O(N+M)
     static int kruskalsDSU(Edge[] edges, int n, int m) {
         PriorityQueue<Edge> pq = new PriorityQueue<>((n1, n2) -> (n1.wt - n2.wt));
         int[] parent = new int[n + 1];

@@ -37,6 +37,7 @@ class DetectCycleInDSU {
         parent[y_rep] = x_rep;
     }
 
+    // TC : O(V+E)
     static int detectCycleInDSU(int V, ArrayList<ArrayList<Integer>> adj) {
         int[] parent = new int[V];
         for (int i = 0; i < V; i++) {
